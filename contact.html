@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"> 
+  <style>
+    .contact-section {
+        padding: 8rem 2rem; /* Doubled padding */
+        max-width: 1400px; /* Doubled max-width */
+        margin: 0 auto;
+        text-align: center;
+    }
+  
+    .contact-section h2 {
+        font-family: 'Playfair Display', serif;
+        color: var(--coffee-brown);
+        font-size: clamp(4rem, 8vw, 5rem); /* Doubled font size */
+        margin-bottom: 2rem;
+    }
+  
+    .contact-section p {
+        font-size: clamp(2rem, 4vw, 2.2rem); /* Doubled font size */
+        color: var(--coffee-brown);
+        margin-bottom: 4rem; /* Doubled margin */
+    }
+  
+    .contact-form-container {
+        background: white;
+        padding: 4rem; /* Doubled padding */
+        border-radius: 20px; /* Doubled border radius */
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Doubled shadow */
+        max-width: 1000px; /* Doubled max-width */
+        margin: 0 auto;
+    }
+  
+    .input-group {
+        margin-bottom: 3rem; /* Doubled margin */
+        text-align: left;
+    }
+  
+    .input-group label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 1rem; /* Doubled margin */
+        font-size: 2.4rem; /* Doubled font size */
+        color: var(--coffee-brown);
+    }
+  
+    .input-group input, .input-group textarea {
+        width: 100%;
+        padding: 2rem; /* Doubled padding */
+        border: 2px solid #ccc; /* Thicker border */
+        border-radius: 10px; /* Doubled border radius */
+        font-size: 2.4rem; /* Doubled font size */
+    }
+  
+    .input-group textarea {
+        resize: vertical;
+        min-height: 300px; /* Doubled height */
+    }
+  
+    .submit-btn {
+        background: var(--coffee-brown);
+        color: white;
+        border: none;
+        padding: 1.5rem 3rem; /* Doubled padding */
+        font-size: 2rem; /* Doubled font size */
+        border-radius: 10px; /* Doubled border radius */
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+  
+    .submit-btn:hover {
+        background: #5a3828;
+    }
+  
+  </style>  
+</head>
+<body>
+    <!-- Nav -->
+    <nav>
+      <div class="nav-content">
+        <h2><a href="home.html">Java Jive</a></h2>      
+        <button class="menu-toggle">&equiv;</button>
+        <div class="nav-links">
+          <a href="mission.html">Our Mission</a>
+          <a href="about.html">About Us</a>
+          <a href="menu.html">Menu</a>
+          <a href="merch.html">Java Shop</a>
+          <a href="contact.html">Contact</a>
+          <a href="order.html">Order</a>
+        </div>
+      </div>
+    </nav>
+  
+  <!-- Main Body -->
+  <section class="contact-section">
+    <h2>Get in Touch</h2>
+    <p>We'd love to hear from you! Whether you have a question, feedback, 
+      or just want to say hello, drop us a message, and we'll get back 
+      to you as soon as possible.</p>
+
+    <div class="contact-form-container">
+      <form action="#">
+          <div class="form-input">
+              <label for="name">Full Name</label><br>
+              <input type="text" id="name" name="name" 
+              placeholder="Enter your full name" required>
+          </div>
+
+          <div class="form-input">
+              <label for="email">Email</label><br>
+              <input type="email" id="email" name="email" 
+              placeholder="Enter your email" required>
+          </div>
+
+          <div class="form-input">
+              <label for="inquiry">Inquiry</label><br>
+              <textarea id="inquiry" name="inquiry" rows="4" 
+              placeholder="Type your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Visit Us</h4>
+        <p>24 Coffee Lane</p>
+        <p>Brooklyn, New York 11204</p>
+        <p>Mon-Fri: 8am - 8pm</p>
+        <p>Sat-Sun: 8am - 6pm</p>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <a href="#">Contact Us</a>
+        <a href="https://facebook.com">Facebook</a>
+        <a href="https://x.com">Twitter</a>
+        <a href="https://instagram.com">Instagram</a>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="#">Mission</a>
+        <a href="menu.html">Menu</a>
+        <a href="#">Java Shop</a>
+        <a href="#">About Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Java Jive. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

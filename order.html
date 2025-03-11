@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css"> 
+
     <style>
         .menu {
             flex: 1;
             align-self: center;
-            /* flex-basis: 50%; */
-            /* max-width: 60%; */
+            flex-direction: column;
             width: 100%;
             padding: 30px;
             min-width: 500px;
@@ -18,22 +18,33 @@
             box-sizing: border-box;
         }
         .menu-box {
-            flex: 1;
-            align-self: center;
-            align-items: center;
             display: flex;
+            flex-direction: row; /* Default layout */
             align-items: center;
             justify-content: center;
-            gap: 20px;
             background: #6f4e37;
             border-radius: 30px;
             box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
             min-height: 400px;
             width: 75%;
-            margin-top: 40px;
-            margin-bottom: 60px;
+            max-width: 100%;
+            margin: 40px auto;
+            padding: 20px;
+            gap: 20px;
+        }
+        .form-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .dropdown {
+            color: #6f4e37;
             width: 100%;
             max-width: 500px;
             min-width: 150px;
@@ -44,7 +55,6 @@
             background-color: #fff5e6;
             border: 0px;
             border-radius: 0.25rem;
-            color: #000;
             cursor: pointer; 
             display: block; 
         }
@@ -65,13 +75,6 @@
         /* Slideshow container */
         .slideshow-container {
             flex: 1;
-            /* flex: 1;
-            flex-basis: 50%;
-            text-align: right;
-            max-width: 40%;
-            position: relative;
-            /* margin-top: 30px; */
-            /* overflow: hidden; */ 
             position: relative;
             display: flex;
             justify-content: center; /* Centers images */
@@ -106,10 +109,8 @@
             transform: translateY(-50%);
             padding: 10px;
             width: auto;
-            /* margin-top: -22px; */
             color: #fff5e6;
             font-weight: bold;
-            /* font-size: 18px; */
             transition: 0.6s ease;
             border-radius: 0 3px 3px 0;
             user-select: none;
@@ -172,8 +173,13 @@
             animation-duration: 1.5s;
         }
 
+        .coffee, .tea, .yummies {
+            color: #fff5e6;
+            font-size: 20px;
+        }
+
         .quantity-input {
-            display: none; /* Initially hidden */
+            display: none;
             font-family: 'Poppins';
             width: 100%;
             max-width: 200px;
@@ -183,6 +189,35 @@
             border-radius: 5px;
             background-color: #fff5e6;
             border: 0px;
+            text-align: left;
+        }
+        
+        .quantity-and-checkbox-container {
+            display: none;
+            margin-top: 10px;
+            gap: 15px;
+        }
+
+        .subtotal-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff5e6;
+            padding: 20px;
+            text-align: left;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #6f4e37;
+            margin-top: 100px;
+        }
+
+        .right-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers items horizontally */
+            justify-content: space-between;
+            height: 100%; /* Ensures full height */
         }
 
         @keyframes fade {
@@ -194,41 +229,30 @@
             .slideshow-container {
                 display: none;
             }  
+            .subtotal-container {
+                display: none;
+            }
+
         }
 
         /* Responsive adjustments */
         @media screen and (max-width: 768px) {
-            .dropdown {
-                max-width: 300px; /*Shrinks on smaller screens*/
-                font-size: 1rem; /* Slightly smaller font */
-                padding: 8px; /* Adjust padding */
-            }
-            .slideshow-container {
-                display: none;
-            }
             .menu-box {
                 flex-direction: column; /*Stack elements vertically*/
                 align-items: center;
                 justify-content: center;
-                /* width: 100%; */
-                padding: 20px;
-                /* gap: 20px; Reduce space for small screens */
+                height: 100%;
+                width: 90%;
+                padding: 15px;
             }
-            .menu, .slideshow-container {
+            .form-container {
+                width: 100%;
+                max-width: 400px;
+            }
+            .menu {
                 max-width: 100%;
                 /* margin: 0 auto; Center content */
                 padding-left: 0; /* Remove extra padding */
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .dropdown {
-                max-width: 250px; /* Shrinks even more on very small screens */
-                font-size: 0.9rem; /* Smaller text */
-                padding: 6px; /* Reduce padding */
-            }
-            .slideshow-container {
-                display: none;
             }
         }
 
@@ -237,141 +261,235 @@
                 font-size: 14px; /* Reduce arrow size */
                 padding: 8px; /* Reduce padding */
             }   
+            .slideshow-container {
+                display: none;
+            }
+            .menu-box {
+                flex-direction: column; /* Stack elements */
+                width: 90%; /* Adjust width for smaller screens */
+                padding: 10px;
+            }
+            .form-container {
+                width: 100%; /* Ensure it stays inside */
+                max-width: 100%; /* Allow it to shrink */
+                padding: 10px;
+                padding-left: 100px;
+            } 
         }
     </style>
+
 </head>
 <body>
     <nav>
         <div class="nav-content">
           <h2><a href="home.html">Java Jive</a></h2>      
-          <button class="menu-toggle">☰</button>
+          <button class="menu-toggle">&equiv;</button>
           <div class="nav-links">
-            <a href="#mission">Our Mission</a>
-            <a href="#about">About Us</a>
+            <a href="mission.html">Our Mission</a>
+            <a href="about.html">About Us</a>
             <a href="menu.html">Menu</a>
-            <a href="#java-shop">Java Shop</a>
-            <a href="#contact">Contact</a>
-            <a href="#order">Order</a>
+            <a href="merch.html">Java Shop</a>
+            <a href="contact.html">Contact</a>
+            <a href="order.html">Order</a>
           </div>
         </div>
-    </nav>
+      </nav>
 
     <div style="text-align: center; margin-top: 30px">
-        <h1>Order Online</h1>
+        <h1 id="h1">Order Online</h1>
         Order online and pickup in-store!
     </div>
 
     <div class="menu-box">
-        <div>
+        <div class="form-container" onsubmit="validateForm(event)">
             <form class="menu">
-                <h2 style="color: #ffd1dc">Coffee</h2>
-                <select class="dropdown" onchange="showQuantityInput(this)">
-                    <option>Choose Option</option>
-                    <option>Blue Moon Latte</option>
-                    <option>Golden Glow Latte</option>
-                    <option>Woodland Mocha</option>
-                    <option>Mystic Mocha</option>
-                    <option>Dandelion Dream</option>
-                    <option>Cappuccino</option>
-                    <option>Americano</option>
-                </select>
-                <input type="number" class="quantity-input" placeholder="Enter quantity" min="1">
-                <h2 style="color: #ffd1dc">Tea</h2>
-                <select class="dropdown">
-                    <option>Choose Option</option>
-                    <option>Chai Latte</option>
-                    <option>Matcha</option>
-                </select>
-                <h2 style="color: #ffd1dc">Yummies</h2>
-                <select class="dropdown">
-                    <option>Choose Option</option>
-                    <option>Croissant</option>
-                    <option>Danish</option>
-                    <option>Muffin</option>
-                    <option>Waffles</option>
-                    <option>Bagel</option>
-                </select>
+                <div class="coffee">
+                    <h2 style="color: #ffd1dc">Coffee</h2>
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Blue Moon Latte</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Golden Glow Latte</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Woodland Mocha</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Mystic Mocha</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Dandelion Dream</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Cappuccino</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Americano</label><br>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()">
+                    </div>
+                    
+                </div>
+                
+                <div class="tea">
+                    <h2 style="color: #ffd1dc">Tea</h2>
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Chai Latte</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Matcha</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                </div>
+                
+                <div class="yummies">
+                    <h2 style="color: #ffd1dc">Yummies</h2>
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Croissant</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Danish</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Muffin</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Waffles</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Bagel</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+                </div>
                 <br>
+
+                
+                <div style="color: #fff5e6">
+                    Enter any allergies or dietary restrictions...
+                    <textarea rows="4" cols="50" style="background: #fff5e6;"></textarea>
+                </div>
+
                 <div style="margin-top: 30px;">
                     <input type="submit" class="submit-button">
                 </div>
             </form>
         </div>
 
-        <!-- Slideshow container -->
-        <div class="slideshow-container">
+        <div class="right container">
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
 
-            <!-- Full-width images with number and caption text -->
-            <div class="mySlides fade">
-            <div class="numbertext">1 / 9</div>
-            <img src="bluemoon.webp">
-            <!-- <div class="text">Caption Text</div> -->
-            </div>
-        
-            <div class="mySlides fade">
-            <div class="numbertext">2 / 9</div>
-            <img src="woodlandmocha.webp">
-            <!-- <div class="text">Caption Two</div> -->
-            </div>
-        
-            <div class="mySlides fade">
-            <div class="numbertext">3 / 9</div>
-            <img src="goldenglow.webp">
-            <!-- <div class="text">Caption Three</div> -->
+                <!-- Full-width images with number and caption text -->
+                <div class="mySlides fade">
+                <div class="numbertext">1 / 9</div>
+                <img src="bluemoon.webp">
+                </div>
+            
+                <div class="mySlides fade">
+                <div class="numbertext">2 / 9</div>
+                <img src="woodlandmocha.webp">
+                </div>
+            
+                <div class="mySlides fade">
+                <div class="numbertext">3 / 9</div>
+                <img src="goldenglow.webp">
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">4 / 9</div>
+                    <img src="mysticmocha.webp">
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">5 / 9</div>
+                    <img src="dirtycoconutchai.webp">
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">6 / 9</div>
+                    <img src="dandeliondream.webp">
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">7 / 9</div>
+                    <img src="chai.webp">
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">8 / 9</div>
+                    <img src="matcha.webp">
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">9 / 9</div>
+                    <img src="croissants.webp">
+                </div>
+            
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
 
-            <div class="mySlides fade">
-                <div class="numbertext">4 / 9</div>
-                <img src="mysticmocha.webp">
-                <!-- <div class="text">Caption Three</div> -->
+            <div class="subtotal-container">
+                <h2> Subtotal:</h2>
             </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">5 / 9</div>
-                <img src="dirtycoconutchai.webp">
-                <!-- <div class="text">Caption Three</div> -->
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">6 / 9</div>
-                <img src="dandeliondream.webp">
-                <!-- <div class="text">Caption Three</div> -->
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">7 / 9</div>
-                <img src="chai.webp">
-                <!-- <div class="text">Caption Three</div> -->
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">8 / 9</div>
-                <img src="matcha.webp">
-                <!-- <div class="text">Caption Three</div> -->
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">9 / 9</div>
-                <img src="croissants.webp">
-                <!-- <div class="text">Caption Three</div> -->
-            </div>
-        
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
-        <br>
-        
-        <!-- The dots/circles
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-        </div> -->
-        
+        <br> 
     </div>
 
     <script>
+        const itemPrices = {
+            "Blue Moon Latte": 4.50,
+            "Golden Glow Latte": 5.00,
+            "Woodland Mocha": 4.75,
+            "Mystic Mocha": 5.25,
+            "Dandelion Dream": 4.50,
+            "Cappuccino": 3.75,
+            "Americano": 3.00,
+            "Chai Latte": 4.25,
+            "Matcha": 4.50,
+            "Croissant": 2.50,
+            "Danish": 3.00,
+            "Muffin": 2.75,
+            "Waffles": 5.50,
+            "Bagel": 2.00
+        };
+
         let slideIndex = 1;
             showSlides(slideIndex);
 
@@ -401,14 +519,97 @@
             dots[slideIndex-1].className += " active";
         }
 
-        function showQuantityInput(selectElement) {
-            let quantityInput = selectElement.nextElementSibling; // Gets the input field below the dropdown
-            if (selectElement.value) {
-                quantityInput.style.display = "block"; // Show input if an option is selected
+        function showQuantityInput(checkbox) {
+            let container = checkbox.parentElement; // Get the parent div
+            let quantityInput = container.querySelector(".quantity-input"); // Find the quantity input in the same div
+
+            if (checkbox.checked) {
+                quantityInput.style.display = "block"; // Show input when checked
             } else {
-                quantityInput.style.display = "none"; // Hide input if no selection
+                quantityInput.style.display = "none"; // Hide input when unchecked
+            }
+
+            updateSubtotal();
+        }
+        
+        function updateSubtotal() {
+            let subtotal = 0;
+
+            document.querySelectorAll(".menu-item input[type='checkbox']:checked").forEach(checkbox => {
+                let container = checkbox.parentElement;
+                let quantityInput = container.querySelector(".quantity-input")
+                let itemName = container.querySelector("label").innerText.trim();
+
+                if (quantityInput && quantityInput.value) {
+                    let quantity = parseInt(quantityInput.value) || 0;
+                    let itemPrice = itemPrices[itemName] || 0;
+                    subtotal += quantity * itemPrice;
+                }
+            });
+
+            // Check if subtotal-container exists
+            let subtotalBox = document.querySelector(".subtotal-container");
+            if (subtotalBox) {
+                subtotalBox.innerHTML = `<h2>Subtotal: $${subtotal.toFixed(2)}</h2>`;
             }
         }
+
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission if validation fails
+            let isValid = true;
+            let errorMessage = "";
+
+            // Get all checked checkboxes
+            let checkedItems = document.querySelectorAll(".menu-item input[type='checkbox']:checked");
+
+            if (checkedItems.length === 0) {
+                isValid = false;
+                errorMessage = "Please select at least one item before submitting.";
+            } else {
+                // Check if selected items have valid quantities
+                checkedItems.forEach(checkbox => {
+                    let container = checkbox.parentElement;
+                    let quantityInput = container.querySelector(".quantity-input");
+
+                    if (!quantityInput.value || parseInt(quantityInput.value) <= 0) {
+                        isValid = false;
+                        errorMessage = "Please enter a valid quantity for all selected items.";
+                    }
+                });
+            }
+
+            if (!isValid) {
+                alert(errorMessage); // Show validation error
+                return false; // Prevent form submission
+            }
+
+            // If validation passes, submit the form (or show success message)
+            alert("Your order has been placed successfully! Thanks for supporting Java Jive :)");
+            clearAllCheckboxes();
+            updateSubtotal();
+            return true;
+        }
+
+        function clearAllCheckboxes() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+
+                let container = checkbox.parentElement; // Get the parent div
+                let quantityInput = container.querySelector(".quantity-input"); // Find the quantity input in the same div
+                quantityInput.value = "";
+                quantityInput.style.display = "none"; // Hide input when unchecked
+            });
+
+        }
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        });
     </script>
 
     <footer>
@@ -439,6 +640,17 @@
           <p>&copy; 2025 Java Jive. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+        
+            menuToggle.addEventListener("click", function () {
+                navLinks.classList.toggle("active");
+            });
+        });
+    </script>
     
 </body>
 </html>

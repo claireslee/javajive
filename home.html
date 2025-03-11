@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"> 
+  
+</head>
+<body>
+  <nav>
+    <div class="nav-content">
+      <h2><a href="home.html">Java Jive</a></h2>      
+      <button class="menu-toggle">&equiv;</button>
+      <div class="nav-links">
+        <a href="mission.html">Our Mission</a>
+        <a href="about.html">About Us</a>
+        <a href="menu.html">Menu</a>
+        <a href="merch.html">Java Shop</a>
+        <a href="contact.html">Contact</a>
+        <a href="order.html">Order</a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Main Body -->
+  <section class="hero">
+    <h1>Java Jive</h1>
+    <p>Where Coffee Meets Community</p>
+    <a href="menu.html" class="cta-button">View Our Menu</a>
+  </section>
+
+  <section class="about-section">
+    <h2>Our Story</h2>
+    <p>Nestled in the heart of the city, Java Jive is more than just a coffee 
+       shop - it's a celebration of craft coffee culture and community. Since 
+       2015, we've been carefully sourcing and roasting our own beans, creating 
+       unique blends that tell stories through every sip. Our passionate 
+       baristas are dedicated to the art of coffee-making, ensuring each cup is
+       crafted to perfection. Whether you're starting your morning routine, 
+       meeting friends, or seeking a cozy spot to work, Java Jive offers a warm 
+       welcome and an exceptional coffee experience.</p>
+  </section>
+
+  <section class="why-us">
+    <div class="why-us-content">
+      <h2>Why Choose Java Jive?</h2>
+      <!-- <ul class="benefits-list"> -->
+        <li>Ethically sourced beans from small-scale farmers, ensuring fair trade practices and sustainable agriculture</li>
+        <li>In-house roasting that guarantees freshness and allows us to create signature flavor profiles</li>
+        <li>Award-winning baristas who craft each drink with precision and artistic flair</li>
+        <li>Community-focused space that hosts local events, showcases local artists, and gives back to neighborhood initiatives</li>
+      <!-- </ul> -->
+    </div>
+    <div class="why-us-image">
+      <img src="beans.jpg" alt="Premium coffee beans being roasted at Java Jive">
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <h3>Craft Coffee</h3>
+      <p>Expertly roasted beans and perfectly pulled shots make every cup an 
+        experience to remember.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Fresh Pastries</h3>
+      <p>Daily baked goods made from scratch using local, seasonal 
+        ingredients.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Cozy Space</h3>
+      <p>A warm, inviting atmosphere perfect for work, study, or
+        catching up with friends.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Visit Us</h4>
+        <p>24 Coffee Lane</p>
+        <p>Brooklyn, New York 11204</p>
+        <p>Mon-Fri: 8am - 8pm</p>
+        <p>Sat-Sun: 8am - 6pm</p>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <a href="#">Contact Us</a>
+        <a href="https://facebook.com">Facebook</a>
+        <a href="https://x.com">Twitter</a>
+        <a href="https://instagram.com">Instagram</a>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="mission.html">Mission</a>
+        <a href="menu.html">Menu</a>
+        <a href="merch.html">Java Shop</a>
+        <a href="about.html">About Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Java Jive. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
