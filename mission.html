@@ -40,23 +40,46 @@
             list-style-position: inside;
             padding: 0;
         }
+        @media screen and (max-width: 768px) {
+          h1 {
+              font-size: 2rem;
+          }
+          h2 {
+              font-size: 1.5rem;
+          }
+          p, ul {
+              font-size: 1rem;
+          }
+          .mission-section {
+              max-width: 90%;
+              margin: 30px auto;
+              padding: 15px;
+          }
+          .nav-links {
+              display: none;
+          }
+          .menu-toggle {
+              display: block;
+          }
+        }
+
     </style>
 </head>
 <body>
-  <nav>
-    <div class="nav-content">
-      <h2><a href="home.html">Java Jive</a></h2>      
-      <button class="menu-toggle">&equiv;</button>
-      <div class="nav-links">
-        <a href="mission.html">Our Mission</a>
-        <a href="about.html">About Us</a>
-        <a href="menu.html">Menu</a>
-        <a href="merch.html">Java Shop</a>
-        <a href="contact.html">Contact</a>
-        <a href="order.html">Order</a>
-      </div>
-    </div>
-  </nav>
+    <nav>
+        <div class="nav-content">
+          <h2><a href="mission.html">Java Jive</a></h2>      
+          <button class="menu-toggle">☰</button>
+          <div class="nav-links">
+            <a href="#home">Our Mission</a>
+            <a href="#about">About Us</a>
+            <a href="menu.html">Menu</a>
+            <a href="#java-shop">Java Shop</a>
+            <a href="#contact">Contact</a>
+            <a href="#order">Order</a>
+          </div>
+        </div>
+    </nav>
 
     <section class="mission-section">
         <h1>Our Mission</h1>
@@ -80,33 +103,44 @@
     </section>
 
     <footer>
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>Visit Us</h4>
-          <p>24 Coffee Lane</p>
-          <p>Brooklyn, New York 11204</p>
-          <p>Mon-Fri: 8am - 8pm</p>
-          <p>Sat-Sun: 8am - 6pm</p>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Visit Us</h4>
+            <p>24 Coffee Lane</p>
+            <p>Brooklyn, New York 11204</p>
+            <p>Mon-Fri: 8am - 8pm</p>
+            <p>Sat-Sun: 8am - 6pm</p>
+          </div>
+          <div class="footer-section">
+            <h4>Connect</h4>
+            <a href="#">Contact Us</a>
+            <a href="https://facebook.com">Facebook</a>
+            <a href="https://x.com">Twitter</a>
+            <a href="https://instagram.com">Instagram</a>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <a href="#">Mission</a>
+            <a href="menu.html">Menu</a>
+            <a href="#">Java Shop</a>
+            <a href="#">About Us</a>
+          </div>
         </div>
-        <div class="footer-section">
-          <h4>Connect</h4>
-          <a href="#">Contact Us</a>
-          <a href="https://facebook.com">Facebook</a>
-          <a href="https://x.com">Twitter</a>
-          <a href="https://instagram.com">Instagram</a>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Java Jive. All rights reserved.</p>
         </div>
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <a href="mission.html">Mission</a>
-          <a href="menu.html">Menu</a>
-          <a href="merch.html">Java Shop</a>
-          <a href="about.html">About Us</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Java Jive. All rights reserved.</p>
-      </div>
     </footer>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+        
+            menuToggle.addEventListener("click", function () {
+                navLinks.classList.toggle("active");
+            });
+        });
+    </script>
 
 </body>
 </html>
