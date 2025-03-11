@@ -310,6 +310,12 @@
                         <label>Blue Moon Latte</label>
                         <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
                     </div>
+
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Woodland Mocha</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
                     
                     <div class="menu-item">
                         <input type="checkbox" onchange="showQuantityInput(this)">
@@ -319,19 +325,25 @@
                     
                     <div class="menu-item">
                         <input type="checkbox" onchange="showQuantityInput(this)">
-                        <label>Woodland Mocha</label>
+                        <label>Mystic Mocha</label>
                         <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
                     </div>
-                    
+
                     <div class="menu-item">
                         <input type="checkbox" onchange="showQuantityInput(this)">
-                        <label>Mystic Mocha</label>
+                        <label>Dirty Coconut Chai</label>
                         <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
                     </div>
                     
                     <div class="menu-item">
                         <input type="checkbox" onchange="showQuantityInput(this)">
                         <label>Dandelion Dream</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Latte</label>
                         <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
                     </div>
                     
@@ -346,6 +358,13 @@
                         <label>Americano</label><br>
                         <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()">
                     </div>
+
+                                        
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Espresso</label><br>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()">
+                    </div>
                     
                 </div>
                 
@@ -353,7 +372,7 @@
                     <h2 style="color: #ffd1dc">Tea</h2>
                     <div class="menu-item">
                         <input type="checkbox" onchange="showQuantityInput(this)">
-                        <label>Chai Latte</label>
+                        <label>Chai</label>
                         <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
                     </div>
                     
@@ -362,10 +381,34 @@
                         <label>Matcha</label>
                         <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
                     </div>
+
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Honey Tea</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>English Breakfast</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Chamomile</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
+
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Rooibos</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
                 </div>
                 
                 <div class="yummies">
-                    <h2 style="color: #ffd1dc">Yummies</h2>
+                    <h2 style="color: #ffd1dc">Yums</h2>
                     <div class="menu-item">
                         <input type="checkbox" onchange="showQuantityInput(this)">
                         <label>Croissant</label>
@@ -395,13 +438,19 @@
                         <label>Bagel</label>
                         <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
                     </div>
+
+                    <div class="menu-item">
+                        <input type="checkbox" onchange="showQuantityInput(this)">
+                        <label>Donut</label>
+                        <input type="number" class="quantity-input" placeholder="Enter quantity" min="1" onchange="updateSubtotal()"><br>
+                    </div>
                 </div>
                 <br>
 
                 
                 <div style="color: #fff5e6">
                     Enter any allergies or dietary restrictions...
-                    <textarea rows="4" cols="50" style="background: #fff5e6;"></textarea>
+                    <textarea id="allergies" rows="4" cols="50" style="background: #fff5e6;"></textarea>
                 </div>
 
                 <div style="margin-top: 30px;">
@@ -474,20 +523,28 @@
 
     <script>
         const itemPrices = {
-            "Blue Moon Latte": 4.50,
-            "Golden Glow Latte": 5.00,
-            "Woodland Mocha": 4.75,
-            "Mystic Mocha": 5.25,
-            "Dandelion Dream": 4.50,
-            "Cappuccino": 3.75,
-            "Americano": 3.00,
-            "Chai Latte": 4.25,
-            "Matcha": 4.50,
-            "Croissant": 2.50,
-            "Danish": 3.00,
-            "Muffin": 2.75,
-            "Waffles": 5.50,
-            "Bagel": 2.00
+            "Blue Moon Latte": 5.95,
+            "Golden Glow Latte": 5.75,
+            "Woodland Mocha": 6.50,
+            "Mystic Mocha": 6.75,
+            "Dirty Coconut Chai": 5.50,
+            "Dandelion Dream": 5.25,
+            "Latte": 4.50,
+            "Cappuccino": 4.25,
+            "Americano": 3.75,
+            "Espresso": 1.75,
+            "Chai": 4.25,
+            "Matcha": 5.25,
+            "Honey Tea": 4.50,
+            "English Breakfast": 3.50,
+            "Chamomile": 3.50,
+            "Rooibos": 3.50,
+            "Croissant": 3.50,
+            "Danish": 4.25,
+            "Muffin": 3.75,
+            "Waffles": 7.50,
+            "Bagel": 3.25,
+            "Donut": 2.25,
         };
 
         let slideIndex = 1;
@@ -599,6 +656,8 @@
                 let quantityInput = container.querySelector(".quantity-input"); // Find the quantity input in the same div
                 quantityInput.value = "";
                 quantityInput.style.display = "none"; // Hide input when unchecked
+
+                document.getElementById("allergies").value = "";
             });
 
         }
