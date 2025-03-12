@@ -90,27 +90,6 @@ nav {
     padding: 0 1rem;
 }
 
-.about-section {
-    padding: 4rem 1rem;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.about-section h2 {
-    font-family: 'Playfair Display', serif;
-    color: var(--coffee-brown);
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    margin-bottom: 1.5rem;
-}
-
-.about-section p {
-    font-size: clamp(1rem, 2vw, 1.1rem);
-    line-height: 1.8;
-    color: var(--coffee-brown);
-    padding: 0 1rem;
-}
-
 .features {
     padding: 4rem 1rem;
     max-width: 1200px;
@@ -315,10 +294,6 @@ nav {
 @media (max-width: 480px) {
     .hero {
         padding: 3rem 1rem;
-    }
-
-    .about-section, .features {
-        padding: 2rem 1rem;
     }
 
     .feature-card {
