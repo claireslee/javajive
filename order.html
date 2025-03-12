@@ -276,6 +276,21 @@
                 padding-left: 100px;
             } 
         }
+
+
+        @media screen and (max-width: 500px) {
+            .menu-box {
+                flex-direction: column; /* Stack elements */
+                width: 90%; /* Adjust width for smaller screens */
+                padding: 10px;
+            }
+            .form-container {
+                width: 100%; /* Ensure it stays inside */
+                max-width: 100%; /* Allow it to shrink */
+                padding: 10px;
+                padding-left: 175px;
+            } 
+        }
     </style>
 
 </head>
@@ -450,7 +465,7 @@
                 
                 <div style="color: #fff5e6">
                     Enter any allergies or dietary restrictions...
-                    <textarea id="allergies" rows="4" cols="50" style="background: #fff5e6;"></textarea>
+                    <textarea id="allergies" rows="4" cols="40" style="background: #fff5e6;"></textarea>
                 </div>
 
                 <div style="margin-top: 30px;">
