@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en"></html>
+<html lang="en">
 <html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Java Jive</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="style.css"> 
   <style>
     .contact-section {
@@ -13,7 +14,7 @@
       text-align: center;
     }
 
-    .contact-section h2 {
+    .contact-section h1 {
       font-family: 'Playfair Display', serif;
       color: var(--coffee-brown);
       font-size: 2.5rem;
@@ -71,33 +72,79 @@
     }
   
     .submit-btn:hover {
-        background: #5a3828;
+      background: #5a3828;
+    }
+
+    #show {
+      background-color: var(--coffee-brown); 
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem; 
+      padding: 12px 24px;
+      border: none; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      transition: 0.4s;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .accordion {
+      background-color: #fff5e6;
+      color: var(--coffee-brown);
+      cursor: pointer;
+      padding: 20px 25px;
+      width: 100%;
+      text-align: left;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      outline: none;
+      transition: 0.4s;
+    }
+    
+    .panel {
+      padding: 0 25px;
+      background-color: #fff5e6;
+      display: none;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem; 
+      color: var(--coffee-brown);
     }
   </style>  
 </head>
 <body>
-    <!-- Nav -->
-    <nav>
-      <div class="nav-content">
-        <h2><a href="home.html">Java Jive</a></h2>      
-        <button class="menu-toggle">&equiv;</button>
-        <div class="nav-links">
-          <a href="mission.html">Our Mission</a>
-          <a href="about.html">About Us</a>
-          <a href="menu.html">Menu</a>
-          <a href="merch.html">Java Shop</a>
-          <a href="contact.html">Contact</a>
-          <a href="order.html">Order</a>
-        </div>
+  <!-- Nav -->
+  <nav>
+    <div class="nav-content">
+      <h2><a href="home.html">Java Jive</a></h2>      
+      <button class="menu-toggle">&equiv;</button>
+      <div class="nav-links">
+        <a href="mission.html">Our Mission</a>
+        <a href="about.html">About Us</a>
+        <a href="menu.html">Menu</a>
+        <a href="merch.html">Java Shop</a>
+        <a href="contact.html">Contact</a>
+        <a href="order.html">Order</a>
       </div>
-    </nav>
-  
+    </div>
+  </nav>
+
   <!-- Main Body -->
   <section class="contact-section">
-    <h2>Get in Touch</h2>
-    <p>We'd love to hear from you! Whether you have a question, feedback, 
+    <h1>Get in Touch</h1>
+    <h3>We'd love to hear from you! Whether you have a question, feedback, 
       or just want to say hello, drop us a message, and we'll get back 
-      to you as soon as possible.</p>
+      to you as soon as possible.</h3>
+
+     <!--Add button to show FAQs-->
+    <button id="show">SHOW FAQs</button>
+    <!--Div with id of result-->
+    <div id="result">&nbsp;</div>
+    <div id = "json-data">&nbsp;</div>
+    <div id = "json-list">&nbsp;</div>
 
     <div class="contact-form-container">
       <form id="contact-form">
@@ -106,19 +153,16 @@
               <input type="text" id="name" name="name" 
               placeholder="Enter your full name" required>
           </div>
-
           <div class="form-input">
               <label for="email">Email</label><br>
               <input type="email" id="email" name="email" 
               placeholder="Enter your email" required>
           </div>
-
           <div class="form-input">
               <label for="inquiry">Inquiry</label><br>
               <textarea id="inquiry" name="inquiry"
               placeholder="Type your message here..." required></textarea>
           </div>
-
           <button type="button" class="submit-btn" onclick="submitForm()">Submit</button>
       </form>
     </div>
@@ -168,6 +212,31 @@
       alert("Thank you for contacting us!");
       document.getElementById("contact-form").reset();
     }
+
+    //FAQs from JSON file display as an accordion
+    $("#show").click(function() {
+      $.get("faqs.json", function(data) {
+        //make into list of faqs
+        let faqList = JSON.stringify(data);
+        faqList = "<ul>";
+        data.forEach(function(faq) {
+          faqList += "<li style = 'list-style-type: none;''>"
+              + "<button class='accordion'>" + faq.question + "</button>"
+              + "<div class='panel'><p>" + faq.answer + "</p></div>"
+              + "</li>";
+        })
+        faqList += "</ul>";
+        //display
+        $("#result").html(faqList);
+        //toggle accordion
+        $(".accordion").click(function() {
+        $(this).toggleClass("active");
+        const panel = $(this).next(".panel");
+        panel.toggle();
+      });
+    });
+  });
   </script>
 </body>
 </html>
+
